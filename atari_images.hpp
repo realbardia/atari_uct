@@ -1,6 +1,7 @@
 #ifndef __ATARI_IMAGES_HPP__
 #define __ATARI_IMAGES_HPP__
 
+#define CPU_ONLY
 #include <ale_interface.hpp>
 #include "caffe/caffe.hpp"
 #include "caffe/util/upgrade_proto.hpp"
