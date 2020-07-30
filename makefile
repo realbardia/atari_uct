@@ -3,7 +3,7 @@ CXX := g++ -std=c++11
 ALE := /usr/include/xitari
 CAFFE := ${HOME}/subsystem/caffe-dev
 FLAGS := -I$(ALE) -I$(CAFFE)/include -I$(CAFFE)/src -I/usr/include/opencv4/ -I$(CAFFE)/build/src -I$(CAFFE)/tools -I/usr/local/cuda/include -I/opt/intel/mkl/include -L$(ALE) -L/opt/intel/mkl/lib/intel64 -L/opt/intel/mkl/lib  -L/usr/local/lib
-LDFLAGS := -lxitari -O2 -lgflags -lglog -lopencv_core -lopencv_highgui  -lmkl_rt -lboost_system -DUSE_MKLL -lopencv_videoio -lopencv_photo -lopencv_imgcodecs -lopencv_video -lopencv_ml -lopencv_imgproc -lopencv_core
+LDFLAGS := -lxitari -O2 -lgflags -lglog -lopencv_core -lopencv_highgui -lboost_system -DUSE_MKLL -lopencv_videoio -lopencv_photo -lopencv_imgcodecs -lopencv_video -lopencv_ml -lopencv_imgproc -lopencv_core
 # -lSDL -lSDL_gfx -lSDL_image 
 
 all: uctPlanner atariUCTPlanner 
