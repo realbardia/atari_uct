@@ -36,7 +36,11 @@ void imgResize(cv::Mat& origin, cv::Mat& result, int height, int width) {
 }
 
 void RGBToGray(cv::Mat& rgb, cv::Mat& gray) {
-  cv::cvtColor(rgb, gray, CV_BGR2GRAY);
+#if CV_VERSION_MAJOR == 4
+  cv::cvtColor(rgb, gray, cv::COLOR_BGR2GRAY);
+#else
+    cv::cvtColor(rgb, gray, CV_BGR2GRAY);
+#endif
 }
 
 void GrayToArray(cv::Mat gray, unsigned char* array, int height, int width) {
@@ -82,7 +86,7 @@ public:
     cv::Mat rgb_image(kImgHeight, kImgWidth, CV_8UC3);
     cv::Mat resized(kCropSize, kCropSize, CV_8UC3);
     cv::Mat gray(kCropSize, kCropSize, CV_8UC1);
-    
+
     convertNTSC(frame.getArray(), rgb_image, kImgHeight, kImgWidth);
     imgResize(rgb_image, resized, kCropSize, kCropSize);
     RGBToGray(resized, gray);
