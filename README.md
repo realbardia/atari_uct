@@ -1,15 +1,39 @@
 # atari_uct
 Upper Confidence Tree Planner for ATARI games
 
-(1) compile the codes:
+### Compile the codes:
 
--- set up the path to your xitari emulator (ALE) and caffe-dev (CAFFE) in makefile
+-- First you need to install dependencies. on Ubuntu:
 
--- make
+```bash
+sudo apt-get install libopencv-dev libcaffe-cpu-dev libgflags-dev libgoogle-glog-dev libprotobuf-dev libboost-thread-dev libboost-system-dev libboost-dev libblas-dev cmake git
+```
 
-(2) run UCT on ATARI games
+-- Next clone xitari and build it:
 
--- ./atariUCTPlanner -rom_path=${HOME}/subsystem/roms/ms_pacman.bin -depth=25 -num_traj=100 -save_data=true -save_path=output
+```bash
+git clone https://github.com/deepmind/xitari.git
+cd xitari
+cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr .
+make -j2
+sudo make install
+```
+
+-- and build project at the end:
+
+```bash
+make
+```
+
+
+
+### run UCT on ATARI games
+
+To run project just run below command:
+
+```
+./atariUCTPlanner -rom_path=${HOME}/subsystem/roms/ms_pacman.bin -depth=25 -num_traj=100 -save_data=true -save_path=output
+```
 
 -- depth and num_traj specify the planning depth and number of sampled trajectories
 
@@ -17,7 +41,8 @@ Upper Confidence Tree Planner for ATARI games
 
 -- if save_data is true, then UCT planning data is saved in the folder specified by save_path. In the above example, the game frames are stored in output/frames folder, and actions are stored in output/act 
 
-(3) training using caffe-dev
+### Training using caffe-dev
+
 -- a sample trajectory data is stored in output.tar.gz. train_sample shows how to train a neural network given the sample data
 
 -- step 1: generate pixel-wise mean: ./preprocess.sh (assume caffe-dev binaries are in your PATH)
